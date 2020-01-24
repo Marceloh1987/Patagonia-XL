@@ -8,14 +8,15 @@ const NavbarStyled = styled.div`
     padding: 10px;
     position: fixed;
     width: 100%;
+    z-index: 999;
+`;
 
-`
+
 const Logo = styled(Title)`
     font-size:30px;
     color: black;
     text-shadow: 1px 1px 4px white;
-    `
-
+    `;
 
 export function Navbar() {
     return <NavbarStyled>

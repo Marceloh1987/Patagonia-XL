@@ -9,15 +9,20 @@ const MenuStyled = styled.div`
 
 `
 
-export function Menu(){
+export function Menu({setOpenFood}){
     return (
     <MenuStyled>
-        {Object.entries(foods).map(([sectionName, foods]) => 
+        {Object.entries(foods).map(([sectionName, foods]) => (
         <>
             <h1>{sectionName}</h1>
             <FoodGrid>
-            {foods.map(food =>(
-                <Food img={food.img}>
+            {foods.map(food => (
+                <Food
+                 img={food.img}
+                 onClick={() => {
+                    setOpenFood(food);
+                }}
+                 >
                 <FoodLabel>
                     {food.name}
                 </FoodLabel>
@@ -25,7 +30,7 @@ export function Menu(){
         ))}
         </FoodGrid>
         </>
-        )}
+        ))}
     </MenuStyled>
     );
 }

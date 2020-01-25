@@ -5,14 +5,14 @@ export const FoodGrid = styled.div`
 display: grid;
 grid-template-columns: 1fr 1fr 1fr;
 gap: 20px;
-`
-export const FoodLabel = styled.div`
+`;
+export const FoodLabel = styled(Title)`
 position: absolute;
 background-color: rgba(256, 256, 256, 0.6);
 padding: 5px;
-`
+`;
 
-export const Food = styled(Title)`
+export const Food = styled.div`
 height: 150px;
 padding: 10px;
 font-size: 20px
@@ -32,4 +32,4 @@ box-shadow: 0px 0px 2px 0px grey;
     margin-bottom: 5px;
     box-shadow: 0px 5px 15px 0px grey;
 }
-`
+`;

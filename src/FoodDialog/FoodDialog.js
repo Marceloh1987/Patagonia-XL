@@ -35,6 +35,7 @@ export const DialogFooter = styled.div`
     height: 60px;
     display: flex;
     justify-content: center;
+    padding-bottom: 10px;
 `;
 
 export const ConfirmButton = styled(Title)`
@@ -99,6 +100,7 @@ function FoodDialogContainer({openFood, setOpenFood, setOrders, orders }) {
     const quantity = useQuantity(openFood && openFood.quantity);
     const toppings = useToppings(openFood.toppings);
     const choiceRadio = useChoice(openFood.choice);
+    const isEditing = openFood.index > -1;
 
     function close(){
         setOpenFood();
@@ -112,6 +114,13 @@ function FoodDialogContainer({openFood, setOpenFood, setOrders, orders }) {
         toppings: toppings.toppings,
         choice: choiceRadio.value
     };
+
+    function editOrder(){
+        const newOrders = [...orders];
+        newOrders[order.index] = order;
+        setOrders(newOrders);
+        close();
+    }
 
     function addToOrder() {
         setOrders([...orders, order]);
@@ -136,8 +145,12 @@ function FoodDialogContainer({openFood, setOpenFood, setOrders, orders }) {
            {openFood.choices && <Choices openFood={openFood} choiceRadio={choiceRadio}/>}
         </DialogContent>
         <DialogFooter>
-            <ConfirmButton onClick={addToOrder} disabled={openFood.choices && !choiceRadio.value}>
-                Agregar: {formatPrice(getPrice(order))}
+            <ConfirmButton
+             onClick={isEditing ? editOrder : addToOrder}
+             disabled={openFood.choices && !choiceRadio.value}
+             >
+            {isEditing ? 'Actualizar Pedido: ' : 'Agregar: '}
+            {formatPrice(getPrice(order))}
             </ConfirmButton>
         </DialogFooter>
     </Dialog>

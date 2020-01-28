@@ -1,18 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { blueguer } from "../Styles/Colors";
 import { Title } from "../Styles/Title";
 import { Nav, Navbar, Button } from 'react-bootstrap/';
-
-
-const NavbarStyled = styled.div`
-    background-color: ${blueguer};
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    z-index: 999;
-`;
-
 
 const Logo = styled(Title)`
     font-size:30px;

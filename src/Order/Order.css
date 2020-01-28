@@ -1,0 +1,15 @@
+.close_checkout_x{
+    background-color: #1b1a20;
+    width: 60px;
+    height: 60px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 60px;
+    position: absolute;
+    top: 0;
+    left: -60px;
+    cursor: pointer;
+}
+.CarritoQl{
+    background-color: #1b1a20;
+}

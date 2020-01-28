@@ -10,7 +10,7 @@ const FooterStyled = styled(Title)`
     background-color: #000000;
     color: white;
     text-align: center;
-    font-size: 20px;
+    font-size: 15px;
 `;
 
 export function Footer() {
@@ -18,7 +18,7 @@ export function Footer() {
         <FooterStyled><div id="pagina">
         <div id="cabecera">Patagonia XL</div>
         <div id="contenido"></div>
-        <div id="pie">2020 &copy;</div>
+        <div id="pie">2020 &copy; Provided by SmartApps </div>
       </div></FooterStyled>
     )
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Title } from '../Styles/Title';
 
 const ToppingGrid = styled.div`
     display: grid;
@@ -15,8 +16,13 @@ const CheckboxLabel = styled.label`
     cursor: pointer;
 `;
 
+const ToppingsStyled = styled(Title)`
+    font-size: 15px;
+`;
+
 export function Toppings({ toppings, checkTopping }) {
     return (
+        <ToppingsStyled>
         <ToppingGrid>
             {toppings.map((topping, i) => (
             <CheckboxLabel>
@@ -31,5 +37,6 @@ export function Toppings({ toppings, checkTopping }) {
             </CheckboxLabel>
             ))}
         </ToppingGrid>
+        </ToppingsStyled>
     );
 }

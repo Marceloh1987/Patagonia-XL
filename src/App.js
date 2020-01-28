@@ -8,6 +8,7 @@ import { Order } from './Order/Order';
 import { useOpenFood } from './Hooks/useOpenFood';
 import { useOrders } from './Hooks/useOrders';
 import { useTitle } from './Hooks/useTitle';
+import { Footer } from './Footer/Footer';
 
 function App() {
   const openFood = useOpenFood();
@@ -21,7 +22,8 @@ function App() {
     <Navbar/>
     <Order {...orders} {...openFood}/>
     <Banner/>
-    <Menu {...openFood}/>   
+    <Menu {...openFood}/>  
+     
     </>
   );
 }

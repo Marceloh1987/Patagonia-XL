@@ -13,7 +13,7 @@ import { Choices } from './Choices';
 
 
 const Dialog = styled.div`
-    width: 600px;
+    width: 660px;
     background-color: white;
     position: fixed;
     top: 75px;
@@ -38,7 +38,7 @@ const DetailStyle = styled(Title)`
 
 export const DialogFooter = styled.div`
     box-shadow: 0px -2px 20px 0px grey;
-    height: 60px;
+    height: 80px;
     display: flex;
     justify-content: center;
     padding-bottom: 10px;
@@ -47,7 +47,7 @@ export const DialogFooter = styled.div`
 export const ConfirmButton = styled(Title)`
     margin: 10px;
     color: white;
-    height: 20px;
+    height: 40px;
     border-radius: 5px;
     padding: 10px;
     text-align: center;

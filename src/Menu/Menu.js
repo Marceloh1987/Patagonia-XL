@@ -19,27 +19,28 @@ const Detailstyled = styled.div`
 export function Menu({ setOpenFood }){
     return (
     <MenuStyled>
-        {Object.entries(foods).map(([sectionName, foods]) => (
-        <>
+        {Object.entries(foods).map(([sectionName, foods],i) => (
+        <div key={i}>
             <h1>{sectionName}</h1>
             {}
             <FoodGrid>
-                {foods.map(food => (
+                {foods.map((food, i) => (
                 <Food
+                key={food.name + i}
                     img={food.img}
                     onClick={() => {
                     setOpenFood(food);
                     }}
                 >
-                <FoodLabel>
-                    <div>{food.name}</div>
-                    <Detailstyled>{food.detail}</Detailstyled>
-                    <div>{formatPrice(food.price)}</div>
-                </FoodLabel>
-            </Food>
-            ))}
-        </FoodGrid>
-        </>
+                    <FoodLabel>
+                        <div>{food.name}</div>
+                        <Detailstyled>{food.detail}</Detailstyled>
+                        <div>{formatPrice(food.price)}</div>
+                    </FoodLabel>
+                </Food>
+                ))}
+            </FoodGrid>
+        </div>
       ))}
     </MenuStyled>
     );

@@ -51,7 +51,7 @@ export const ConfirmButton = styled(Title)`
     border-radius: 5px;
     padding: 10px;
     text-align: center;
-    width: 200px;
+    width: 250px;
     cursor: pointer;
     background-color: ${blueguer};
     ${({disabled}) => 

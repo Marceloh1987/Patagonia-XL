@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { blueguer } from "../Styles/Colors";
 import { Title } from "../Styles/Title";
-import { Nav, Navbar, NavDropdown, Form, FormControl, Button } from 'react-bootstrap/';
+import { Nav, Navbar, Button } from 'react-bootstrap/';
 
 
 const NavbarStyled = styled.div`

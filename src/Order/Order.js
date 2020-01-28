@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import { DialogContent,
          DialogFooter,
@@ -8,7 +8,15 @@ import { formatPrice } from '../Data/FoodData';
 import { getPrice } from '../FoodDialog/FoodDialog';
 import { Title } from '../Styles/Title';
 
+<<<<<<< HEAD
 const OrderStyled = styled(Title)`
+=======
+import './Order.css';
+
+
+
+const OrderStyled = styled.div`
+>>>>>>> ec190a606a4be5e87acf8345f2c3cbc6dc4a1b8e
     position: fixed;
     right: 0px;
     top: 60px;
@@ -19,7 +27,10 @@ const OrderStyled = styled(Title)`
     box-shadow: 4px 0px 5px 4px grey;
     display: flex;
     flex-direction: column;
+    transition: 0.4s;
+    transform: ${({open}) => open ? 'translateX(0)' : 'translateX(100%)'};
 `;
+
 
 const OrderContent = styled(DialogContent)`
     padding: 20px;
@@ -55,28 +66,38 @@ const DetailItem = styled.div`
 
 `;
 
+
 export function Order({ orders, setOrders, setOpenFood }) {
+
+    const [checkoutOpen, isCheckoutOpen] = useState(false);
+
     const subtotal = orders.reduce((total, order) => {
         return total + getPrice(order);
     }, 0);
-
-const deleteItem = index => {
-    const newOrders = [...orders];
-    newOrders.splice(index, 1);
-    setOrders(newOrders);
-}
+    
+    const deleteItem = index => {
+        const newOrders = [...orders];
+        newOrders.splice(index, 1);
+        setOrders(newOrders);
+    }
 
     return (
-        <OrderStyled>  
-            {orders.length === 0 ? (          
+        <OrderStyled open={checkoutOpen}>
+            <div onClick={()=>{isCheckoutOpen(!checkoutOpen)}} className="close_checkout_x">
+                {checkoutOpen ? 'X' : <img className="CarritoQl" src={require('./bag-icon.png')} alt="Carrito Patagonia XL"/>}
+            </div>  
+            {orders.length === 0 ? (  
             <OrderContent>Tu Orden esta Vacia.</OrderContent>
             ) : (
             <OrderContent>
                 {" "}
                 <OrderContainer> Tu Pedido: </OrderContainer>
-                {orders.map((order, index) => (
+                {
+                     orders.map((order, index) => (
+                        
                     <OrderContainer editable>
                         <OrderItem
+                        key={index + order}
                         onClick={() => {
                             setOpenFood({...order, index})
                         }}
@@ -115,7 +136,7 @@ const deleteItem = index => {
             </OrderContent>
             )}
             <DialogFooter>
-            <ConfirmButton>Checkout</ConfirmButton>
+            <ConfirmButton>Pagar!</ConfirmButton>
             </DialogFooter>                  
         </OrderStyled>
     );

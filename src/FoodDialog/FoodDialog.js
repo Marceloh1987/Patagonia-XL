@@ -89,7 +89,7 @@ const DialogBannerName = styled(FoodLabel)`
     top: ${({img}) => (img ? `100px` : `20px`)};
 `;
 
-const pricePerToppings = 500;
+/*var pricePerToppings = 500;*/
 
 export function getPrice(order){
     return (
@@ -103,11 +103,15 @@ function hasToppings(food) {
     return food.section === 'Sandwich';
 }
 
+const pricePerToppings = 500;
+
+
 function FoodDialogContainer({openFood, setOpenFood, setOrders, orders }) {
     const quantity = useQuantity(openFood && openFood.quantity);
     const toppings = useToppings(openFood.toppings);
     const choiceRadio = useChoice(openFood.choice);
     const isEditing = openFood.index > -1;
+   
 
     function close(){
         setOpenFood();

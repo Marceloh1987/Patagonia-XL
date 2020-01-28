@@ -1,7 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Title } from '../Styles/Title';
 
 const CursorPointer = `cursor: pointer`;
+
+const ChoiceStyled = styled(Title)`
+font-size: 15px;
+padding-top: 5px;
+`;
 
 const RadioInput = styled.input`
     ${CursorPointer}
@@ -17,6 +23,7 @@ export function Choices({ openFood, choiceRadio }){
             <h3>Elije una</h3>
             {openFood.choices.map(choice => (
         <>
+        <ChoiceStyled>
             <RadioInput
                 type="radio"
                 id={choice}
@@ -26,6 +33,7 @@ export function Choices({ openFood, choiceRadio }){
                 onChange={choiceRadio.onChange}
             />
             <Label for={choice}> {choice} </Label>{" "}
+            </ChoiceStyled>
             </>
         ))}
      </>

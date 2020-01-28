@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { DialogContent,
          DialogFooter,
@@ -63,6 +63,7 @@ const DetailItem = styled.div`
 
 
 export function Order({ orders, setOrders, setOpenFood }) {
+    
 
     const [checkoutOpen, isCheckoutOpen] = useState(false);
 
@@ -76,10 +77,20 @@ export function Order({ orders, setOrders, setOpenFood }) {
         setOrders(newOrders);
     }
 
+        useEffect(() =>{
+            orders.length === 0 ? isCheckoutOpen(false) : isCheckoutOpen(true)
+        }, [orders.length])
+        
+
     return (
         <OrderStyled open={checkoutOpen}>
             <div onClick={()=>{isCheckoutOpen(!checkoutOpen)}} className="close_checkout_x">
-                {checkoutOpen ? 'X' : <img className="CarritoQl" src={require('./bag-icon.png')} alt="Carrito Patagonia XL"/>}
+                {checkoutOpen ? 'X' : (
+                    <div>
+                        <img className="CarritoQl" src={require('./bag-icon.png')} alt="Carrito Patagonia XL"/>
+                        <span className={orders.length > 0 ? 'bag__quantity' : ''}>{orders.length > 0 ? orders.length : null}</span>
+                    </div>
+                    )}
             </div>  
             {orders.length === 0 ? (  
             <OrderContent>Tu Orden esta Vacia.</OrderContent>

@@ -30,7 +30,7 @@
     width:100%;
     height:100%;
     -webkit-filter: blur(2px);
-    filter: blur(2px);
+    filter: contrast(0px);    
     filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='2');
   
   }

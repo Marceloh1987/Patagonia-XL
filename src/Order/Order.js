@@ -7,16 +7,11 @@ import { DialogContent,
 import { formatPrice } from '../Data/FoodData';
 import { getPrice } from '../FoodDialog/FoodDialog';
 import { Title } from '../Styles/Title';
-
-<<<<<<< HEAD
-const OrderStyled = styled(Title)`
-=======
 import './Order.css';
 
 
 
-const OrderStyled = styled.div`
->>>>>>> ec190a606a4be5e87acf8345f2c3cbc6dc4a1b8e
+const OrderStyled = styled(Title)`
     position: fixed;
     right: 0px;
     top: 60px;

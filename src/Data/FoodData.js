@@ -177,48 +177,56 @@ export const foodItems = [
     },
     {
         name: 'Pichanga XL',
+        detail: 'Asiento, lomo de cerdo, filete de ave, embutidos Llanquihue, tomate, palta, huevo, queso, pickle opcional, papas fritas caseras.',
         img: '/img/Pichanga1.jpg',
         section: 'Pichangas',
         price: 22000
     },
     {
         name: 'Pichanga Familiar',
+        detail: 'Asiento, lomo de cerdo, filete de ave, embutidos Llanquihue, tomate, palta, huevo, queso, pickle opcional, papas fritas caseras.',
         img: '/img/Pichanga1.jpg',
         section: 'Pichangas',
         price: 14000
     },
     {
         name: 'Pichanga Mediana',
+        detail: 'Asiento, lomo de cerdo, filete de ave, embutidos Llanquihue, tomate, palta, huevo, queso, pickle opcional, papas fritas caseras.',
         img: '/img/Pichanga1.jpg',
         section: 'Pichangas',
         price: 9000
     },
     {
         name: 'Pichanga Individual',
+        detail: 'Asiento, lomo de cerdo, filete de ave, embutidos Llanquihue, tomate, palta, huevo, queso, pickle opcional, papas fritas caseras.',
         img: '/img/Pichanga1.jpg',
         section: 'Pichangas',
         price: 6000
     },
     {
         name: 'Chorrillana XL',
+        detail: 'Asiento, lomo de cerdo, filete de ave, embutidos Llanquihue, cebolla frita, huevo frito, papas fritas caseras.',
         img: '/img/chorrillana1.jpg',
         section: 'Chorrillanas',
         price: 22000
     },
     {
         name: 'Chorrillana Familiar',
+        detail: 'Asiento, lomo de cerdo, filete de ave, embutidos Llanquihue, cebolla frita, huevo frito, papas fritas caseras.',
         img: '/img/chorrillana1.jpg',
         section: 'Chorrillanas',
         price: 14000
     },
     {
         name: 'Chorrillana Mediana',
+        detail: 'Asiento, lomo de cerdo, filete de ave, embutidos Llanquihue, cebolla frita, huevo frito, papas fritas caseras.',
         img: '/img/chorrillana1.jpg',
         section: 'Chorrillanas',
         price: 9000
     },
     {
         name: 'Chorrillana Individual.',
+        detail: 'Asiento, lomo de cerdo, filete de ave, embutidos Llanquihue, cebolla frita, huevo frito, papas fritas caseras.',
         img: '/img/chorrillana1.jpg',
         section: 'Chorrillanas',
         price: 6000

@@ -11,6 +11,7 @@ export const FoodLabel = styled(Title)`
 position: absolute;
 background-color: rgba(256, 256, 256, 0.6);
 padding: 5px;
+margin-left: -12px;
 `;
 
 export const Food = styled.div`

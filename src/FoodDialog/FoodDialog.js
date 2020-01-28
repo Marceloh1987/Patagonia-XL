@@ -11,6 +11,7 @@ import { useToppings } from '../Hooks/useToppings';
 import { useChoice } from '../Hooks/useChoice';
 import { Choices } from './Choices';
 
+
 const Dialog = styled.div`
     width: 600px;
     background-color: white;
@@ -28,6 +29,11 @@ export const DialogContent = styled.div`
     min-height: 100px;
     padding: 0px 40px;
     padding-bottom: 80px;
+`;
+
+const DetailStyle = styled(Title)`
+    font-size: 15px;
+    padding-bottom: 10px;
 `;
 
 export const DialogFooter = styled.div`
@@ -79,6 +85,7 @@ const DialogBanner = styled.div`
 const DialogBannerName = styled(FoodLabel)`
     font-size: 30px;
     padding: 5px 40px;
+    margin-left: 0px;
     top: ${({img}) => (img ? `100px` : `20px`)};
 `;
 
@@ -127,7 +134,7 @@ function FoodDialogContainer({openFood, setOpenFood, setOrders, orders }) {
         close();
     }
 
-    return (
+return (
     <>
     <DialogShadow onClick={close} />
     <Dialog>
@@ -135,6 +142,9 @@ function FoodDialogContainer({openFood, setOpenFood, setOrders, orders }) {
             <DialogBannerName> {openFood.name} </DialogBannerName>
         </DialogBanner>
         <DialogContent>
+            <div/>
+            <DetailStyle>{openFood.detail}</DetailStyle>
+            <div/>
            <QuantityInput quantity={quantity} /> 
            {hasToppings(openFood) && (
            <>

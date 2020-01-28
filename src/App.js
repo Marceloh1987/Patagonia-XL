@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar } from './Navbar/Navbar';
+import { NavBar } from './Navbar/Navbar';
 import { Banner } from './Banner/Banner';
 import { Menu } from './Menu/Menu';
 import { FoodDialog } from './FoodDialog/FoodDialog';
@@ -19,7 +19,7 @@ function App() {
     <>
     <GlobalStyle/>
     <FoodDialog {...openFood} {...orders}/>
-    <Navbar/>
+    <NavBar/>
     <Order {...orders} {...openFood}/>
     <Banner/>
     <Menu {...openFood}/>  

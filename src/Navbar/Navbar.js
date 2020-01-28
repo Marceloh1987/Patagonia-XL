@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { blueguer } from "../Styles/Colors";
 import { Title } from "../Styles/Title";
+import { Nav, Navbar, NavDropdown, Form, FormControl, Button } from 'react-bootstrap/';
+
 
 const NavbarStyled = styled.div`
     background-color: ${blueguer};
@@ -18,12 +20,24 @@ const Logo = styled(Title)`
     text-shadow: 1px 1px 4px white;
     `;
 
-export function Navbar() {
-    return <NavbarStyled>
-        <Logo>Patagonia XL
-            <span role="img" aria-label="Hamburguer">
-            🍔
-            </span>
-        </Logo>
-    </NavbarStyled>
+export function NavBar() {
+    return (
+        <Navbar bg="light" expand="lg" fixed='top'>
+            <Navbar.Brand href="#home">
+                <Logo>Patagonia XL
+                    <span role="img" aria-label="Hamburguer">🍔</span>
+                </Logo>
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="mr-auto">
+                </Nav>
+
+                <Button variant="outline-primary">Login</Button>
+
+            </Navbar.Collapse>
+        </Navbar>
+    )
+       
+
 }

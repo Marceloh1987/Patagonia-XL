@@ -7,6 +7,8 @@ import { DialogContent,
 import { formatPrice } from '../Data/FoodData';
 import { getPrice } from '../FoodDialog/FoodDialog';
 import { Title } from '../Styles/Title';
+import Register from '../Register/Register';
+import { Pago } from '../Pago/Pago';
 import './Order.css';
 
 
@@ -61,10 +63,9 @@ const DetailItem = styled.div`
 
 `;
 
-
 export function Order({ orders, setOrders, setOpenFood }) {
     
-
+    const [modalRegisterShow, setModalRegisterShow] = useState(false);
     const [checkoutOpen, isCheckoutOpen] = useState(false);
 
     const subtotal = orders.reduce((total, order) => {
@@ -80,10 +81,12 @@ export function Order({ orders, setOrders, setOpenFood }) {
         useEffect(() =>{
             orders.length === 0 ? isCheckoutOpen(false) : isCheckoutOpen(true)
         }, [orders.length])
+
         
 
     return (
         <OrderStyled open={checkoutOpen}>
+        <Register show={modalRegisterShow} onHide={() => setModalRegisterShow(false)} />
             <div onClick={()=>{isCheckoutOpen(!checkoutOpen)}} className="close_checkout_x">
                 {checkoutOpen ? 'X' : (
                     <div>
@@ -142,7 +145,9 @@ export function Order({ orders, setOrders, setOpenFood }) {
             </OrderContent>
             )}
             <DialogFooter>
-            <ConfirmButton>Pagar!</ConfirmButton>
+                <ConfirmButton onClick={()=>{if(orders.length != 0) setModalRegisterShow(true)}}>
+                    Pagar!
+                </ConfirmButton>
             </DialogFooter>                  
         </OrderStyled>
     );

@@ -19,8 +19,9 @@ const Detailstyled = styled.div`
 
 
 export function Menu({ setOpenFood }){
+    
     const [fbData, setFbData] = useState(null);
-
+    
     useEffect(() => {
         firebase.database().ref('/Menu').on('value', (snapshot) => {
             // const key = Object.values(snapshot.val());
@@ -29,19 +30,21 @@ export function Menu({ setOpenFood }){
         });
     }, []);
 
+    const expectedIndex = [5, 4, 2, 3, 0, 1]
+    
     if(fbData){
-        console.log('array de marchele:',foods);
-        console.log('array firebase:', fbData);
+        const menuDataOrganized = expectedIndex.map(i => Object.entries(fbData)[i]);
+        console.log('fb data', );
         return (
         <MenuStyled>
-            {Object.entries(fbData).map(([sectionName, fbData],i) => (
+            {menuDataOrganized.map(([sectionName, fbData],i) => (
             <div key={i}>
                 <h1>{sectionName}</h1>
                 {}
                 <FoodGrid>
                     {fbData.map((food, i) => (
                     <Food
-                    key={food.name + i}
+                    key={i}
                         img={food.img}
                         onClick={() => {
                         setOpenFood(food);

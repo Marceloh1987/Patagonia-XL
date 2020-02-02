@@ -94,7 +94,7 @@ const DialogBannerName = styled(FoodLabel)`
 export function getPrice(order){
     return (
          order.quantity * 
-         (order.price + 
+         (order.precio + 
             order.toppings.filter(t => t.checked).length * pricePerToppings)
     );
 }
@@ -143,11 +143,11 @@ return (
     <DialogShadow onClick={close} />
     <Dialog>
         <DialogBanner img={openFood.img}>
-            <DialogBannerName> {openFood.name} </DialogBannerName>
+            <DialogBannerName> {openFood.nombre} </DialogBannerName>
         </DialogBanner>
         <DialogContent>
             <div/>
-            <DetailStyle>{openFood.detail}</DetailStyle>
+            <DetailStyle>{openFood.detalle}</DetailStyle>
             <div/>
            <QuantityInput quantity={quantity} /> 
            {hasToppings(openFood) && (

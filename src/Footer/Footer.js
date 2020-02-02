@@ -18,7 +18,7 @@ export function Footer() {
         <FooterStyled><div id="pagina">
         <div id="cabecera">Patagonia XL</div>
         <div id="contenido"></div>
-        <div id="pie">2020 &copy; Provided by SmartApps </div>
+        <div id="pie">2020 &copy; Powered by <a href='https://www.smartapps.cl/'> SmartApps</a> </div>
       </div></FooterStyled>
     )
 }

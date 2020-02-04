@@ -1,5 +1,5 @@
-.close_checkout_x{
-    background-color: #1b1a20;
+.close_checkout{
+    background-color: #017aff;
     width: 60px;
     height: 60px;
     color: #ffffff;
@@ -11,7 +11,7 @@
     cursor: pointer;
 }
 .CarritoQl{
-    background-color: #1b1a20;
+    background-color: #017aff;
 }
 .bag__quantity {
     bottom: 5px;
@@ -29,4 +29,15 @@
     position: absolute;
     bottom: -5px;
     right: 0px;
+  }
+  @media (max-width:480px){
+        .x{
+            line-height: 28px;
+            top: 25px;
+            left: 5px;
+            text-align: center;
+            border-radius: 30px;
+            height: 30px;
+            width: 30px;
+      }
   }

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import firebase from '../src/Firebase/firebase';
 import { NavBar } from './Navbar/Navbar';
 import { Banner } from './Banner/Banner';
 import { Menu } from './Menu/Menu';
@@ -11,20 +12,35 @@ import { useTitle } from './Hooks/useTitle';
 import { Footer } from './Footer/Footer';
 
 export const Home = () => {
+  const [fbData, setFbData] = useState(null);
+  useEffect(() => {
+      firebase.database().ref('/Menu').on('value', (snapshot) => {
+          // const key = Object.values(snapshot.val());
+          // setFbData(key);
+          setFbData(snapshot.val());
+      });
+  }, []);
+
   const openFood = useOpenFood();
   const orders = useOrders();
   useTitle({...openFood, ...orders});
-
-  return (
-    <>
-    <GlobalStyle/>
-    <FoodDialog {...openFood} {...orders}/>
-    <NavBar/>
-    <Order {...orders} {...openFood}/>
-    <Banner/>
-    <Menu {...openFood}/>  
-     <Footer/>
-    </>
-  );
+  if(fbData){
+    return (
+      <>
+      <GlobalStyle/>
+      <FoodDialog {...openFood} {...orders}/>
+      <NavBar/>
+      <Order {...orders} {...openFood}/>
+      <Banner/>
+      <Menu {...openFood}/>  
+       <Footer/>
+      </>
+    );
+  }
+  else{
+    return(
+      <h1>Loading...</h1>
+    )
+  }
 }
 

@@ -6,6 +6,9 @@ display: grid;
 grid-template-columns: 1fr 1fr 1fr;
 gap: 20px;
 padding-bottom: 100px;
+@media(max-width:480px){
+    grid-template-columns: 1fr;
+}
 `;
 export const FoodLabel = styled(Title)`
 position: absolute;

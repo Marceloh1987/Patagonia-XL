@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { Spinner } from 'react-bootstrap';
 import styled from 'styled-components';
-import { foods } from '../Data/FoodData';
 import { Food, FoodGrid, FoodLabel } from './FoodGrid';
 import { formatPrice } from '../Data/FoodData';
 import firebase from '../Firebase/firebase';
@@ -15,7 +14,6 @@ const MenuStyled = styled.div`
 const Detailstyled = styled.div`
     font-size: 10px;
 `;
-
 
 
 export function Menu({ setOpenFood }){

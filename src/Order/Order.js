@@ -26,12 +26,18 @@ const OrderStyled = styled(Title)`
     flex-direction: column;
     transition: 0.4s;
     transform: ${({open}) => open ? 'translateX(0)' : 'translateX(100%)'};
+    @media (max-width:480px){
+        width:100%;
+    }
 `;
 
 
 const OrderContent = styled(DialogContent)`
     padding: 20px;
     height: 100%;
+    @media (max-width:480px){
+        padding: 45px;
+    }
 `;
 
 const OrderContainer = styled.div`
@@ -48,6 +54,9 @@ const OrderContainer = styled.div`
       : `
     pointer-events: none; 
   `}
+  @media (max-width:480px){
+      padding: 25px;
+  }
 `;
 
 const OrderItem = styled.div`
@@ -87,7 +96,7 @@ export function Order({ orders, setOrders, setOpenFood }) {
     return (
         <OrderStyled open={checkoutOpen}>
         <Register show={modalRegisterShow} onHide={() => setModalRegisterShow(false)} />
-            <div onClick={()=>{isCheckoutOpen(!checkoutOpen)}} className="close_checkout_x">
+            <div onClick={()=>{isCheckoutOpen(!checkoutOpen)}} className={`close_checkout ${checkoutOpen? 'x' : 'cart'}`} >
                 {checkoutOpen ? 'X' : (
                     <div>
                         <img className="CarritoQl" src={require('./bag-icon.png')} alt="Carrito Patagonia XL"/>
@@ -112,7 +121,7 @@ export function Order({ orders, setOrders, setOpenFood }) {
                         }}
                         >
                             <div>{order.quantity}</div>
-                            <div>{order.name}</div>
+                            <div>{order.nombre}</div>
                             <div 
                                 style={{cursor: 'pointer'}}
                                 onClick={e => {

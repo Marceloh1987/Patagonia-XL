@@ -22,6 +22,12 @@ const Dialog = styled.div`
     left: calc(50% - 250px);
     display: flex;
     flex-direction: column;
+    @media (max-width:480px){
+        width: 100%;
+        top:125px;
+        overflow: auto;
+        left:0;
+    }
 `;
 
 export const DialogContent = styled.div`

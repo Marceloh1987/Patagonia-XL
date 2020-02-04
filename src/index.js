@@ -9,6 +9,7 @@ import * as serviceWorker from './serviceWorker';
 const root = document.getElementById('root');
 
 export const renderApp = (hasAuthenticated, user) => {
+
     ReactDOM.render(
         (<div className="App">
             <Routes authenticated={hasAuthenticated} user={user}/>
@@ -25,6 +26,8 @@ firebase.auth().onAuthStateChanged((userAuth) => {
         history.push('/');
     }
 });
+
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

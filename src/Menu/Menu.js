@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { Spinner } from 'react-bootstrap';
 import styled from 'styled-components';
-import { foods } from '../Data/FoodData';
 import { Food, FoodGrid, FoodLabel } from './FoodGrid';
 import { formatPrice } from '../Data/FoodData';
 import firebase from '../Firebase/firebase';
@@ -17,7 +16,6 @@ const Detailstyled = styled.div`
 `;
 
 
-
 export function Menu({ setOpenFood }){
     
     const [fbData, setFbData] = useState(null);
@@ -29,12 +27,15 @@ export function Menu({ setOpenFood }){
             setFbData(snapshot.val());
         });
     }, []);
-
+    //Para ordenar el menu, como lo tiene el cliente en su carta, es necesario especificar los indeces que queremos asignrarle a la data proveniente de firebase.
+    //Firebase entrega la data ordenada de forma alfabetica o numero, creciente o decreciente. no en la forma que uno muchas veces la necesita mostrar.
+    
     const expectedIndex = [5, 4, 2, 3, 0, 1]
     
     if(fbData){
+
         const menuDataOrganized = expectedIndex.map(i => Object.entries(fbData)[i]);
-        console.log('fb data', );
+
         return (
         <MenuStyled>
             {menuDataOrganized.map(([sectionName, fbData],i) => (

@@ -22,6 +22,12 @@ const Dialog = styled.div`
     left: calc(50% - 250px);
     display: flex;
     flex-direction: column;
+    @media (max-width:480px){
+        width: 100%;
+        top:125px;
+        overflow: auto;
+        left:0;
+    }
 `;
 
 export const DialogContent = styled.div`
@@ -94,8 +100,9 @@ const pricePerToppings = 500;
 export function getPrice(order){
     return (
          order.quantity * 
-         (order.price + 
-            order.toppings.filter(t => t.checked).length * pricePerToppings )
+
+         (order.precio + 
+            order.toppings.filter(t => t.checked).length * pricePerToppings)
     );
 }
 
@@ -140,11 +147,11 @@ return (
     <DialogShadow onClick={close} />
     <Dialog>
         <DialogBanner img={openFood.img}>
-            <DialogBannerName> {openFood.name} </DialogBannerName>
+            <DialogBannerName> {openFood.nombre} </DialogBannerName>
         </DialogBanner>
         <DialogContent>
             <div/>
-            <DetailStyle>{openFood.detail}</DetailStyle>
+            <DetailStyle>{openFood.detalle}</DetailStyle>
             <div/>
            <QuantityInput quantity={quantity} /> 
            {hasToppings(openFood) && (

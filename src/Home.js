@@ -11,7 +11,7 @@ import { useOrders } from './Hooks/useOrders';
 import { useTitle } from './Hooks/useTitle';
 import { Footer } from './Footer/Footer';
 
-export const Home = () => {
+const Home = () => {
   const [fbData, setFbData] = useState(null);
   useEffect(() => {
       firebase.database().ref('/Menu').on('value', (snapshot) => {
@@ -29,7 +29,6 @@ export const Home = () => {
       <>
       <GlobalStyle/>
       <FoodDialog {...openFood} {...orders}/>
-      <NavBar/>
       <Order {...orders} {...openFood}/>
       <Banner/>
       <Menu {...openFood}/>  
@@ -44,3 +43,4 @@ export const Home = () => {
   }
 }
 
+export default Home;

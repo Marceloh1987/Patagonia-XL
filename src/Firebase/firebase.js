@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/auth';
 import 'firebase/analytics';
-
+import {history} from '../Routes/router';
 
 const firebaseConfig = {
     apiKey: "AIzaSyASZiJGNBLjQqNTTZKD73vmIlQISLF8-rI",
@@ -17,6 +17,12 @@ const firebaseConfig = {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
+
+  export const LogOut = () => {
+    firebase.auth().signOut().then(()=>{
+      history.push('/');
+    })
+  }
 
   export const LogIn = (email,pswd) => {
     firebase.auth()

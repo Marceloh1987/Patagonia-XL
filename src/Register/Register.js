@@ -1,4 +1,5 @@
 import React from 'react';
+import firebase from '../Firebase/firebase';
 import { Modal, Button, Form, InputGroup, } from 'react-bootstrap';
 
 
@@ -6,10 +7,31 @@ const Register = (props) => {
 
   const onRegisterSubmit = (e) =>{
     e.preventDefault();
+
     const { name, last_name, email, number, password } = e.target.elements;
 
-    console.log(name.value, last_name.value, email.value, number.value, password.value);
+    firebase.auth()
+            .createUserWithEmailAndPassword(email.value, password.value)
+            .then((user) => {
+                let uid = user.user.uid;
+                firebase.database().ref().child('Users/').push().set({
+                    uid:uid,
+                    type:'client',
+                    nombre:name.value,
+                    apellido:last_name.value,
+                    numero:`+56 ${number.value}`,
+                    email:email.value,
+                    password:password.value,
+                    direccion: '',
+                    comentario: '',
+
+                })
+              })
+                .catch((error) => {
+                  console.log(error);
+                });
   }
+
     return (
         <>
           <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
@@ -49,7 +71,7 @@ const Register = (props) => {
                   <Button variant="primary" type='submit'>
                     Registrarse
                   </Button>
-                  <Button variant="danger" onClick={props.onHide}>
+                  <Button style={{margin:'0 0 0 15px'}} variant="danger" onClick={props.onHide}>
                     Salir
                   </Button>
                 </Form>

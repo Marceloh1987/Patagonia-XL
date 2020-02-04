@@ -11,6 +11,7 @@ const FooterStyled = styled(Title)`
     color: white;
     text-align: center;
     font-size: 15px;
+    padding: 10px 0 0 0;
 `;
 
 export function Footer() {

@@ -89,22 +89,19 @@ const DialogBannerName = styled(FoodLabel)`
     top: ${({img}) => (img ? `100px` : `20px`)};
 `;
 
-/*var pricePerToppings = 500;*/
+const pricePerToppings = 500;
 
 export function getPrice(order){
     return (
          order.quantity * 
          (order.price + 
-            order.toppings.filter(t => t.checked).length * pricePerToppings)
+            order.toppings.filter(t => t.checked).length * pricePerToppings )
     );
 }
 
 function hasToppings(food) {
     return food.section === 'Sandwich';
 }
-
-const pricePerToppings = 500;
-
 
 function FoodDialogContainer({openFood, setOpenFood, setOrders, orders }) {
     const quantity = useQuantity(openFood && openFood.quantity);

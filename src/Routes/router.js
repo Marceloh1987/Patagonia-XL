@@ -4,16 +4,22 @@ import { createBrowserHistory } from 'history';
 //Components
 import Home from '../Home';
 import {NavBar} from '../Navbar/Navbar';
+import {EsperaDialog} from '../Pago/Espera';
+import {ExitoDialog} from '../Pago/Exito';
+import {FalloDialog} from '../Pago/Fallo';
+
 
 export const history = createBrowserHistory();
 
 const Routes = (props) =>{
-    console.log(props)
     return(
         <Router history={history}>
             <NavBar authenticated={props.authenticated} user={props.user} />
             <Switch>
                 <Route path='/' exact component={Home} />
+                <Route path='/pago/wating' exact component={EsperaDialog}/>
+                <Route path='/pago/exito' exact component={ExitoDialog}/>
+                <Route path='/pago/Fallo' exact component={FalloDialog}/>
             </Switch>
         </Router>
     )

@@ -44,7 +44,7 @@ export function NavBar(props) {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto" />
                     <ButtonToolbar  >
-                        <Button variant="outline-dark" onClick={() => setModalRegisterShow(true)}>Registarse</Button>
+                        <Button variant="outline-success" onClick={() => setModalRegisterShow(true)}>Registarse</Button>
                         <Button style={{margin: '0 0 0 10px'}} variant="outline-primary" onClick={() => {setModalLoginShow(true)}}>Login</Button>
                     </ButtonToolbar>
 

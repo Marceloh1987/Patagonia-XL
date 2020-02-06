@@ -23,7 +23,6 @@ firebase.auth().onAuthStateChanged((userAuth) => {
     }
     else {
         renderApp(false, null);
-        history.push('/');
     }
 });
 

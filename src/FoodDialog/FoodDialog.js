@@ -110,7 +110,8 @@ function hasToppings(food) {
     return food.section === 'Sandwich';
 }
 
-function FoodDialogContainer({openFood, setOpenFood, setOrders, orders }) {
+function FoodDialogContainer({openFood, setOpenFood, setOrders, orders, setCloseCart }) {
+
     const [comment, setComment] = useState('');
     const quantity = useQuantity(openFood && openFood.quantity);
     const toppings = useToppings(openFood.toppings);
@@ -120,6 +121,7 @@ function FoodDialogContainer({openFood, setOpenFood, setOrders, orders }) {
 
     function close(){
         setOpenFood();
+        setCloseCart(true);
     }
 
     if (!openFood) return null;
@@ -145,7 +147,7 @@ function FoodDialogContainer({openFood, setOpenFood, setOrders, orders }) {
 
 return (
     <>
-    <DialogShadow onClick={close} />
+    <DialogShadow onClick={() => {close(); }} />
     <Dialog>
         <DialogBanner img={openFood.img}>
             <DialogBannerName> {openFood.nombre} </DialogBannerName>

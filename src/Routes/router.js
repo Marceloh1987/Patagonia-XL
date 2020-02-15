@@ -16,7 +16,7 @@ const Routes = (props) =>{
         <Router history={history}>
             <NavBar authenticated={props.authenticated} user={props.user} name={props.name}/>
             <Switch>
-                <Route path='/' exact component={Home} />
+                <Route path='/' exact component={() => <Home isAuthed={props.authenticated}/>} />
                 <Route path='/pago/wating' exact component={EsperaDialog}/>
                 <Route path='/pago/exito' exact component={ExitoDialog}/>
                 <Route path='/pago/Fallo' exact component={FalloDialog}/>

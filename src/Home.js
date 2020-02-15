@@ -7,12 +7,13 @@ import { Menu } from './Menu/Menu';
 import { FoodDialog } from './FoodDialog/FoodDialog';
 import { GlobalStyle } from './Styles/GlobalStyle';
 import { Order } from './Order/Order';
+import { useCloseCart } from './Hooks/closeCart';
 import { useOpenFood } from './Hooks/useOpenFood';
 import { useOrders } from './Hooks/useOrders';
 import { useTitle } from './Hooks/useTitle';
 import { Footer } from './Footer/Footer';
 
-const Home = () => {
+const Home = (props) => {
   const [fbData, setFbData] = useState(null);
   useEffect(() => {
       firebase.database().ref('/Menu').on('value', (snapshot) => {
@@ -21,7 +22,8 @@ const Home = () => {
           setFbData(snapshot.val());
       });
   }, []);
-
+  
+  const closeCart = useCloseCart();
   const openFood = useOpenFood();
   const orders = useOrders();
   useTitle({...openFood, ...orders});
@@ -30,10 +32,10 @@ const Home = () => {
     return (
       <>
       <GlobalStyle/>
-      <FoodDialog {...openFood} {...orders}/>
-      <Order {...orders} {...openFood}/>
+      <FoodDialog {...openFood} {...orders} {...closeCart} />
+      <Order authenticated={props.isAuthed} {...orders} {...openFood} {...closeCart} />
       <Banner/>
-      <Menu {...openFood} fbData={fbData} />  
+      <Menu {...openFood} fbData={fbData} {...closeCart} />  
        <Footer/>
       </>
     );

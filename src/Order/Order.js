@@ -7,7 +7,7 @@ import { DialogContent,
 import { formatPrice } from '../Data/FoodData';
 import { getPrice } from '../FoodDialog/FoodDialog';
 import { Title } from '../Styles/Title';
-import Register from '../Register/Register';
+import Login from '../Login/Login';
 import { Pago } from '../Pago/Pago';
 import './Order.css';
 
@@ -72,11 +72,10 @@ const DetailItem = styled.div`
 
 `;
 
-export function Order({ orders, setOrders, setOpenFood }) {
-    console.log(orders)
+
+export function Order({ authenticated, orders, setOrders, setOpenFood, closeCart, setCloseCart }) {
     
-    const [modalRegisterShow, setModalRegisterShow] = useState(false);
-    const [checkoutOpen, isCheckoutOpen] = useState(false);
+    const [modalLoginShow, setModalLoginShow] = useState(false);
 
     const subtotal = orders.reduce((total, order) => {
         return total + getPrice(order);
@@ -89,16 +88,17 @@ export function Order({ orders, setOrders, setOpenFood }) {
     }
 
         useEffect(() =>{
-            orders.length === 0 ? isCheckoutOpen(false) : isCheckoutOpen(true)
+            orders.length === 0 ? setCloseCart(true) : setCloseCart(false)
         }, [orders.length])
-
         
-
+    const handlePayment = (orders) => {
+        console.log(orders);
+    }
     return (
-        <OrderStyled open={checkoutOpen}>
-        <Register show={modalRegisterShow} onHide={() => setModalRegisterShow(false)} />
-            <div onClick={()=>{isCheckoutOpen(!checkoutOpen)}} className={`close_checkout ${checkoutOpen? 'x' : 'cart'}`} >
-                {checkoutOpen ? 'X' : (
+        <OrderStyled open={!closeCart}>
+        <Login show={modalLoginShow} onHide={() => setModalLoginShow(false)} />
+            <div onClick={()=>{setCloseCart(!closeCart)}} className={`close_checkout ${!closeCart ? 'x' : 'cart'}`} >
+                {!closeCart ? 'X' : (
                     <div>
                         <img className="CarritoQl" src={require('./bag-icon.png')} alt="Carrito Patagonia XL"/>
                         <span className={orders.length > 0 ? 'bag__quantity' : ''}>{orders.length > 0 ? orders.length : null}</span>
@@ -114,11 +114,11 @@ export function Order({ orders, setOrders, setOpenFood }) {
                 {
                      orders.map((order, index) => (
                         
-                    <OrderContainer editable>
+                    <OrderContainer editable key={index}>
                         <OrderItem
                         key={index + order}
                         onClick={() => {
-                            isCheckoutOpen(false)
+                            setCloseCart(true)
                             setOpenFood({...order, index})
                         }}
                         >
@@ -129,7 +129,7 @@ export function Order({ orders, setOrders, setOpenFood }) {
                                 onClick={e => {
                                     e.stopPropagation();
                                     deleteItem(index);
-                                    isCheckoutOpen(false);
+                                    setCloseCart(true);
                                 }}>
                                      <span role="img" aria-label="Delete">
                                      🗑️
@@ -157,7 +157,10 @@ export function Order({ orders, setOrders, setOpenFood }) {
             </OrderContent>
             )}
             <DialogFooter>
-                <ConfirmButton onClick={()=>{if(orders.length !== 0) setModalRegisterShow(true)}}>
+                <ConfirmButton onClick={()=>{
+                    if(orders.length >= 0 && !authenticated) setModalLoginShow(true)
+                    else handlePayment(orders);
+                }}>
                     Pagar!
                 </ConfirmButton>
             </DialogFooter>                  

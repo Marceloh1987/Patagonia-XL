@@ -1,9 +1,12 @@
 import React, {useRef, useState} from 'react';
 import { Modal, Button, Form, Spinner, Overlay, Tooltip } from 'react-bootstrap';
+import './Login.css';
 import firebase from '../Firebase/firebase';
+import Register from '../Register/Register';
 
 const Login = (props) => {
 
+    const [modalRegisterShow, setModalRegisterShow] = useState(false);
     const [btnText, setBtnText] = useState(false);
     const [show, setShow] = useState(false);
     const [message, setMessage] = useState('');
@@ -99,7 +102,13 @@ const Login = (props) => {
                         </Overlay>
                     </Form>
                 </Modal.Body>
+                <div className="modal_footer">
+                    <div className='text-center'>
+                        ¿Aún no estas registrado? <div className='login_click_aqui' onClick={() =>{setModalRegisterShow(true); props.onHide()}}>Click Aquí</div>
+                    </div>
+                </div>
             </Modal>
+            <Register show={modalRegisterShow} onHide={() => setModalRegisterShow(false)} />
         </>
     )
 }

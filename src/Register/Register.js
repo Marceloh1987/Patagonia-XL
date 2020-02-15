@@ -17,6 +17,7 @@ const Register = (props) => {
     firebase.auth()
             .createUserWithEmailAndPassword(email.value, password.value)
             .then((user) => {
+              console.log(user)
               setBtnText(false);
               firebase.auth().currentUser.updateProfile({
                 displayName: name.value

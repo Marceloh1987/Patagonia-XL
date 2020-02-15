@@ -10,12 +10,12 @@ const BannerStyled = styled(Title)`
 export const Banner = () => {
     return(
         <BannerStyled>
-        <div class="jumbotron jumbotron-fluid">
-  <div class="container">
+        <div className="jumbotron jumbotron-fluid">
+  <div className="container">
       <div className="bg-text">
         <h1>Ahora Menú y Pago en Línea </h1>
-        <p class="lead">Pichangas, Sandwich, Completos y más!<br/><br/> Siguenos en Facebook!</p>
-        <button class="btn btn-outline-primary">Patagonia XL</button>
+        <p className="lead">Pichangas, Sandwich, Completos y más!<br/><br/> Siguenos en Facebook!</p>
+        <button className="btn btn-primary">Patagonia XL</button>
       </div>
   </div>
 </div>

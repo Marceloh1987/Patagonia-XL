@@ -14,7 +14,6 @@ const Detailstyled = styled.div`
 
 
 export function Menu({ setOpenFood, fbData, setCloseCart, closeCart }){
-    console.log(closeCart)
     //Para ordenar el menu, como lo tiene el cliente en su carta, es necesario especificar los indeces que queremos asignrarle a la data proveniente de firebase.
     //Firebase entrega la data ordenada de forma alfabetica o numero, creciente o decreciente. no en la forma que uno muchas veces la necesita mostrar.
     

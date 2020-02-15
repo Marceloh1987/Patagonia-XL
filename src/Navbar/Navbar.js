@@ -33,7 +33,7 @@ export function NavBar(props) {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item>Perfil</Dropdown.Item>
+                            <Dropdown.Item href={`/dashboard/${props.uid}`}>Perfil</Dropdown.Item>
                             <Dropdown.Divider />
                             <Dropdown.Item onClick={() => LogOut()}>Salir</Dropdown.Item>
                         </Dropdown.Menu>

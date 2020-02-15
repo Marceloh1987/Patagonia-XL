@@ -23,7 +23,7 @@ const Register = (props) => {
                 displayName: name.value
               })
               let uid = user.user.uid;
-              firebase.database().ref().child('Users/').push().set({
+              firebase.database().ref().child('Users/' + uid).set({
                   uid:uid,
                   type:'client',
                   nombre:name.value,

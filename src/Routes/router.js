@@ -15,7 +15,7 @@ export const history = createBrowserHistory();
 const Routes = (props) =>{
     return(
         <Router history={history}>
-            <NavBar authenticated={props.authenticated} user={props.user} name={props.name}/>
+            <NavBar authenticated={props.authenticated} user={props.user} name={props.name} uid={props.uid} />
             <Switch>
                 <Route path='/' exact component={() => <Home isAuthed={props.authenticated}/>} />
                 <Route path='/dashboard/:uid' component={Main} />

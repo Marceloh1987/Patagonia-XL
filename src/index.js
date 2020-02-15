@@ -7,19 +7,21 @@ import * as serviceWorker from './serviceWorker';
 
 const root = document.getElementById('root');
 
-export const renderApp = (hasAuthenticated, user, name) => {
+export const renderApp = (hasAuthenticated, user, name, uid) => {
 
     ReactDOM.render(
         (<div className="App">
-            <Routes authenticated={hasAuthenticated} user={user} name={name} />
+            <Routes authenticated={hasAuthenticated} user={user} name={name} uid={uid} />
         </div>), root);
 };
 
 firebase.auth().onAuthStateChanged((userAuth) => {
     if (userAuth) {
+        
         const user = userAuth.email;
         const name = userAuth.displayName;
-        renderApp(true, user, name);
+        const uid = userAuth.uid;
+        renderApp(true, user, name, uid);
     }
     else {
         renderApp(false, null, null);

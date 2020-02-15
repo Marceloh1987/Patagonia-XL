@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import firebase from '../src/Firebase/firebase';
 import { Spinner } from 'react-bootstrap';
-import { NavBar } from './Navbar/Navbar';
 import { Banner } from './Banner/Banner';
 import { Menu } from './Menu/Menu';
 import { FoodDialog } from './FoodDialog/FoodDialog';
@@ -42,7 +41,7 @@ const Home = (props) => {
   }
   else{
     return (
-        <div style={{margin:'10% 0 0 0', textAlign:'center'}}>
+        <div style={{margin:'20% 0 0 0', textAlign:'center'}}>
             <Spinner animation="grow" variant="primary" />
             <Spinner animation="grow" variant="secondary" />
             <Spinner animation="grow" variant="success" />

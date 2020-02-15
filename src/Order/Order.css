@@ -41,3 +41,8 @@
             width: 30px;
       }
   }
+  @media (max-width:510px){
+    .close_checkout{
+        top:10px;
+    }
+  }

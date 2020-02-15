@@ -25,7 +25,7 @@ export function NavBar(props) {
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             {props.authenticated ? 
-                <>
+                <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto" /> 
                     <Dropdown>
                         <Dropdown.Toggle variant="primary" id="dropdown-basic">
@@ -38,7 +38,7 @@ export function NavBar(props) {
                             <Dropdown.Item onClick={() => LogOut()}>Salir</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
-                    </>
+                </Navbar.Collapse>
                 :
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto" />

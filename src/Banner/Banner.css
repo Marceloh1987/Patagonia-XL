@@ -1,52 +1,57 @@
-.jumbotron {
-    margin: 6vh 0 0 0;
-    position:relative;
-    overflow:hidden;
+.jumbotron{
+  margin: 4vh 0 4vh 0;
+  background-image: url(./Banner.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color:white !important;
+  height:485px;
+}
+.container{
+  padding-top: 6vh;
+  text-align: center;
+}
+
+.btn-outline-primary{
+  color:white;
+  border-color:white;
+  border-radius:0px;
+  font-weight:100;
+  margin-top:20px;
+}
+.lead{
+  font-weight:100;
+  margin-top:-10px;
+}
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+}
+
+@media(max-width:480px){
+  .jumbotron{
+    background-size: cover;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white !important;
+    height: 440px;
   }
-  
-  .jumbotron .container {
-    position:relative;
-    z-index:2;
-    
-    background:rgba(0,0,0,0.2);
-    padding:2rem;
-    border:1px solid rgba(0,0,0,0.1);
-    border-radius:3px;
+  .bg-text{
+    height: auto;
+    width: 25rem;
+    padding: 5px 0 5px 0;
+    transform: translate(-50%, -95%);
   }
-  
-  .jumbotron-background {
-      background-size: cover;
-    object-fit:cover;
-    font-family: 'object-fit: cover;';
-    position:absolute;
-    top:0;
-    z-index:1;
-    width:100%;
-    height:100%;
-    opacity:0.5;
-  }
-  
-  img.blur {
-    width:100%;
-    height:100%;
-    -webkit-filter: blur(2px);
-    filter: blur(2px);
-    filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='2');
-  
-  }
-  .Logo{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
-  }
-  .container{
-      text-align: center;
-  }
-  .fb-color{
-    background-color:#017aff;
-    color: white;
-  }
-  .btn{
-    cursor: pointer;
-  }
+}

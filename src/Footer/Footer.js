@@ -19,7 +19,7 @@ export function Footer() {
         <FooterStyled><div id="pagina">
         <div id="cabecera">Patagonia XL</div>
         <div id="contenido"></div>
-        <div id="pie">2020 &copy; Powered by <a href='https://www.smartapps.cl/' target='_blank'> SmartApps</a> </div>
+        <div id="pie">2020 &copy; Powered by <a href='https://www.smartapps.cl/' target='_blank' rel="noopener noreferrer"> SmartApps</a> </div>
       </div></FooterStyled>
     )
 }

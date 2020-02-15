@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import firebase from './Firebase/firebase';
 import Routes, { history } from './Routes/router';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 const root = document.getElementById('root');

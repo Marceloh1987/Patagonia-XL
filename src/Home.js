@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import firebase from '../src/Firebase/firebase';
+import { Spinner } from 'react-bootstrap';
 import { NavBar } from './Navbar/Navbar';
 import { Banner } from './Banner/Banner';
 import { Menu } from './Menu/Menu';
@@ -24,6 +25,7 @@ const Home = () => {
   const openFood = useOpenFood();
   const orders = useOrders();
   useTitle({...openFood, ...orders});
+
   if(fbData){
     return (
       <>
@@ -31,16 +33,24 @@ const Home = () => {
       <FoodDialog {...openFood} {...orders}/>
       <Order {...orders} {...openFood}/>
       <Banner/>
-      <Menu {...openFood}/>  
+      <Menu {...openFood} fbData={fbData} />  
        <Footer/>
       </>
     );
   }
   else{
-    return(
-      <h1>Loading...</h1>
+    return (
+        <div style={{margin:'10% 0 0 0', textAlign:'center'}}>
+            <Spinner animation="grow" variant="primary" />
+            <Spinner animation="grow" variant="secondary" />
+            <Spinner animation="grow" variant="success" />
+            <Spinner animation="grow" variant="danger" />
+            <Spinner animation="grow" variant="warning" />
+            <Spinner animation="grow" variant="info" />
+            <Spinner animation="grow" variant="dark" />
+        </div>
     )
-  }
+}
 }
 
 export default Home;

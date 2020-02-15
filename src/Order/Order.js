@@ -73,6 +73,7 @@ const DetailItem = styled.div`
 `;
 
 export function Order({ orders, setOrders, setOpenFood }) {
+    console.log(orders)
     
     const [modalRegisterShow, setModalRegisterShow] = useState(false);
     const [checkoutOpen, isCheckoutOpen] = useState(false);
@@ -117,6 +118,7 @@ export function Order({ orders, setOrders, setOpenFood }) {
                         <OrderItem
                         key={index + order}
                         onClick={() => {
+                            isCheckoutOpen(false)
                             setOpenFood({...order, index})
                         }}
                         >
@@ -127,6 +129,7 @@ export function Order({ orders, setOrders, setOpenFood }) {
                                 onClick={e => {
                                     e.stopPropagation();
                                     deleteItem(index);
+                                    isCheckoutOpen(false);
                                 }}>
                                      <span role="img" aria-label="Delete">
                                      🗑️
@@ -154,7 +157,7 @@ export function Order({ orders, setOrders, setOpenFood }) {
             </OrderContent>
             )}
             <DialogFooter>
-                <ConfirmButton onClick={()=>{if(orders.length != 0) setModalRegisterShow(true)}}>
+                <ConfirmButton onClick={()=>{if(orders.length !== 0) setModalRegisterShow(true)}}>
                     Pagar!
                 </ConfirmButton>
             </DialogFooter>                  

@@ -13,7 +13,6 @@ const Logo = styled(Title)`
     `;
 
 export function NavBar(props) {
-
     const [modalRegisterShow, setModalRegisterShow] = useState(false);
     const [modalLoginShow, setModalLoginShow] = useState(false);
 
@@ -30,7 +29,7 @@ export function NavBar(props) {
                     <Nav className="mr-auto" /> 
                     <Dropdown>
                         <Dropdown.Toggle variant="primary" id="dropdown-basic">
-                            Bienvenido
+                            Bienvenido(a) {props.name}
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>

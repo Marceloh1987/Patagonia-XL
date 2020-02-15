@@ -14,7 +14,7 @@ export const history = createBrowserHistory();
 const Routes = (props) =>{
     return(
         <Router history={history}>
-            <NavBar authenticated={props.authenticated} user={props.user} />
+            <NavBar authenticated={props.authenticated} user={props.user} name={props.name}/>
             <Switch>
                 <Route path='/' exact component={Home} />
                 <Route path='/pago/wating' exact component={EsperaDialog}/>

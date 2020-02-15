@@ -6,7 +6,7 @@ const Login = (props) => {
 
     const [btnText, setBtnText] = useState(false);
     const [show, setShow] = useState(false);
-    const [message, setMessage] = useState('E-mail o password incorrecto.');
+    const [message, setMessage] = useState('');
     const target = useRef(null);
 
     const onFormSubmit = (e) =>{
@@ -39,6 +39,12 @@ const Login = (props) => {
                 else if(error.code === 'auth/user-not-found'){
                     setBtnText(false);
                     setMessage('Usuario no encontrado, verifique sus credenciales e intente nuevamente.');
+                    setShow(true);
+                    setTimeout(() => setShow(false), 3000);
+                }
+                else if(error.code === 'auth/email-already-in-use'){
+                    setBtnText(false);
+                    setMessage('El e-mail que ha ingresado ya se encuentra en uso.');
                     setShow(true);
                     setTimeout(() => setShow(false), 3000);
                 }

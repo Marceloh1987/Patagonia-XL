@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import { FoodLabel } from '../Menu/FoodGrid';
 import { blueguer } from '../Styles/Colors';
@@ -10,7 +10,7 @@ import { Toppings } from './Toppings';
 import { useToppings } from '../Hooks/useToppings';
 import { useChoice } from '../Hooks/useChoice';
 import { Choices } from './Choices';
-
+import { Form } from 'react-bootstrap';
 
 const Dialog = styled.div`
     width: 660px;
@@ -110,7 +110,9 @@ function hasToppings(food) {
     return food.section === 'Sandwich';
 }
 
-function FoodDialogContainer({openFood, setOpenFood, setOrders, orders }) {
+function FoodDialogContainer({openFood, setOpenFood, setOrders, orders, setCloseCart }) {
+
+    const [comment, setComment] = useState('');
     const quantity = useQuantity(openFood && openFood.quantity);
     const toppings = useToppings(openFood.toppings);
     const choiceRadio = useChoice(openFood.choice);
@@ -119,6 +121,7 @@ function FoodDialogContainer({openFood, setOpenFood, setOrders, orders }) {
 
     function close(){
         setOpenFood();
+        setCloseCart(true);
     }
 
     if (!openFood) return null;
@@ -127,7 +130,8 @@ function FoodDialogContainer({openFood, setOpenFood, setOrders, orders }) {
         ...openFood,
         quantity: quantity.value,
         toppings: toppings.toppings,
-        choice: choiceRadio.value
+        choice: choiceRadio.value,
+        comment: comment
     };
 
     function editOrder(){
@@ -136,7 +140,6 @@ function FoodDialogContainer({openFood, setOpenFood, setOrders, orders }) {
         setOrders(newOrders);
         close();
     }
-
     function addToOrder() {
         setOrders([...orders, order]);
         close();
@@ -144,7 +147,7 @@ function FoodDialogContainer({openFood, setOpenFood, setOrders, orders }) {
 
 return (
     <>
-    <DialogShadow onClick={close} />
+    <DialogShadow onClick={() => {close(); }} />
     <Dialog>
         <DialogBanner img={openFood.img}>
             <DialogBannerName> {openFood.nombre} </DialogBannerName>
@@ -161,6 +164,15 @@ return (
            </>
            )}
            {openFood.choices && <Choices openFood={openFood} choiceRadio={choiceRadio}/>}
+           <br />
+           <Form>
+                <Form.Group>
+                    <Form.Label>
+                        <DetailStyle>Comentarios:</DetailStyle>
+                    </Form.Label>
+                    <Form.Control defaultValue={comment} onInput={e => setComment(e.target.value)} as="textarea" rows="3" placeholder='Si desea quitar algún ingrediente, escríbalo acá.' />
+                </Form.Group>
+            </Form>
         </DialogContent>
         <DialogFooter>
             <ConfirmButton

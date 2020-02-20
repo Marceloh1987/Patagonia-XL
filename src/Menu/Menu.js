@@ -1,10 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import { Spinner } from 'react-bootstrap';
+import React from 'react';
 import styled from 'styled-components';
 import { Food, FoodGrid, FoodLabel } from './FoodGrid';
 import { formatPrice } from '../Data/FoodData';
-import firebase from '../Firebase/firebase';
-
 
 const MenuStyled = styled.div`
     height: 1000px
@@ -16,27 +13,14 @@ const Detailstyled = styled.div`
 `;
 
 
-export function Menu({ setOpenFood }){
-    
-    const [fbData, setFbData] = useState(null);
-    
-    useEffect(() => {
-        firebase.database().ref('/Menu').on('value', (snapshot) => {
-            // const key = Object.values(snapshot.val());
-            // setFbData(key);
-            setFbData(snapshot.val());
-        });
-    }, []);
+export function Menu({ setOpenFood, fbData, setCloseCart, closeCart }){
     //Para ordenar el menu, como lo tiene el cliente en su carta, es necesario especificar los indeces que queremos asignrarle a la data proveniente de firebase.
     //Firebase entrega la data ordenada de forma alfabetica o numero, creciente o decreciente. no en la forma que uno muchas veces la necesita mostrar.
     
     const expectedIndex = [5, 4, 2, 3, 0, 1]
-    
-    if(fbData){
+    const menuDataOrganized = expectedIndex.map(i => Object.entries(fbData)[i]);
 
-        const menuDataOrganized = expectedIndex.map(i => Object.entries(fbData)[i]);
-
-        return (
+    return (
         <MenuStyled>
             {menuDataOrganized.map(([sectionName, fbData],i) => (
             <div key={i}>
@@ -49,6 +33,7 @@ export function Menu({ setOpenFood }){
                         img={food.img}
                         onClick={() => {
                         setOpenFood(food);
+                        setCloseCart(true);
                         }}
                     >
                         <FoodLabel>
@@ -60,21 +45,7 @@ export function Menu({ setOpenFood }){
                     ))}
                 </FoodGrid>
             </div>
-          ))}
+            ))}
         </MenuStyled>
-        );
-    }
-    else{
-        return (
-            <div style={{margin:'10% 0 0 0', textAlign:'center'}}>
-                <Spinner animation="grow" variant="primary" />
-                <Spinner animation="grow" variant="secondary" />
-                <Spinner animation="grow" variant="success" />
-                <Spinner animation="grow" variant="danger" />
-                <Spinner animation="grow" variant="warning" />
-                <Spinner animation="grow" variant="info" />
-                <Spinner animation="grow" variant="dark" />
-            </div>
-        )
-    }
+    );
 }

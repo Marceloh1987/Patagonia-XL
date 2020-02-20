@@ -1,0 +1,11 @@
+.modal_footer{
+    padding: 1rem;
+    border-top: 1px solid #dee2e6;
+    border-bottom-right-radius: .3rem;
+    border-bottom-left-radius: .3rem;
+}
+.login_click_aqui{
+    cursor:pointer;
+    color:#007bff;
+    display: contents;
+}

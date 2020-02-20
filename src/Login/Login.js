@@ -1,12 +1,15 @@
 import React, {useRef, useState} from 'react';
 import { Modal, Button, Form, Spinner, Overlay, Tooltip } from 'react-bootstrap';
+import './Login.css';
 import firebase from '../Firebase/firebase';
+import Register from '../Register/Register';
 
 const Login = (props) => {
 
+    const [modalRegisterShow, setModalRegisterShow] = useState(false);
     const [btnText, setBtnText] = useState(false);
     const [show, setShow] = useState(false);
-    const [message, setMessage] = useState('E-mail o password incorrecto.');
+    const [message, setMessage] = useState('');
     const target = useRef(null);
 
     const onFormSubmit = (e) =>{
@@ -39,6 +42,12 @@ const Login = (props) => {
                 else if(error.code === 'auth/user-not-found'){
                     setBtnText(false);
                     setMessage('Usuario no encontrado, verifique sus credenciales e intente nuevamente.');
+                    setShow(true);
+                    setTimeout(() => setShow(false), 3000);
+                }
+                else if(error.code === 'auth/email-already-in-use'){
+                    setBtnText(false);
+                    setMessage('El e-mail que ha ingresado ya se encuentra en uso.');
                     setShow(true);
                     setTimeout(() => setShow(false), 3000);
                 }
@@ -93,7 +102,13 @@ const Login = (props) => {
                         </Overlay>
                     </Form>
                 </Modal.Body>
+                <div className="modal_footer">
+                    <div className='text-center'>
+                        ¿Aún no estas registrado? <div className='login_click_aqui' onClick={() =>{setModalRegisterShow(true); props.onHide()}}>Click Aquí</div>
+                    </div>
+                </div>
             </Modal>
+            <Register show={modalRegisterShow} onHide={() => setModalRegisterShow(false)} />
         </>
     )
 }

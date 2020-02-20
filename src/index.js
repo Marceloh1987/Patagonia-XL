@@ -3,26 +3,28 @@ import ReactDOM from 'react-dom';
 import firebase from './Firebase/firebase';
 import Routes, { history } from './Routes/router';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 const root = document.getElementById('root');
 
-export const renderApp = (hasAuthenticated, user) => {
+export const renderApp = (hasAuthenticated, user, name, uid) => {
 
     ReactDOM.render(
         (<div className="App">
-            <Routes authenticated={hasAuthenticated} user={user}/>
+            <Routes authenticated={hasAuthenticated} user={user} name={name} uid={uid} />
         </div>), root);
 };
 
 firebase.auth().onAuthStateChanged((userAuth) => {
     if (userAuth) {
+        
         const user = userAuth.email;
-        renderApp(true, user);
+        const name = userAuth.displayName;
+        const uid = userAuth.uid;
+        renderApp(true, user, name, uid);
     }
     else {
-        renderApp(false, null);
+        renderApp(false, null, null);
     }
 });
 

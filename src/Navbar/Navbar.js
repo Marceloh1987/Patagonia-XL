@@ -13,7 +13,6 @@ const Logo = styled(Title)`
     `;
 
 export function NavBar(props) {
-
     const [modalRegisterShow, setModalRegisterShow] = useState(false);
     const [modalLoginShow, setModalLoginShow] = useState(false);
 
@@ -25,21 +24,27 @@ export function NavBar(props) {
                 </Logo>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
+<<<<<<< HEAD
             {props.authenticated ?
                 <>
                     <Nav className="mr-auto" />
+=======
+            {props.authenticated ? 
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-auto" /> 
+>>>>>>> eab1b4db0744b40936c3c563f50472a2c6f75f64
                     <Dropdown>
                         <Dropdown.Toggle variant="primary" id="dropdown-basic">
-                            Bienvenido
+                            Bienvenido(a) {props.name}
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item>Perfil</Dropdown.Item>
+                            <Dropdown.Item href={`/dashboard/${props.uid}`}>Perfil</Dropdown.Item>
                             <Dropdown.Divider />
                             <Dropdown.Item onClick={() => LogOut()}>Salir</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
-                    </>
+                </Navbar.Collapse>
                 :
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto" />

@@ -4,7 +4,9 @@ import navStyles from "./Nav.module.scss";
 import {NavLink} from 'react-router-dom';
 
 
-const Nav = () => {
+const Nav = (props) => {
+    console.log(props.userdata)
+
 
     const [menuBtn, setmenuBtn] = useState({ isOpen: false });
     const toggle = () =>{

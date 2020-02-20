@@ -37,9 +37,10 @@ const Register = (props) => {
                 props.onHide();
               })
                 .catch((error) => {
-                  if(error.code === "auth/wrong-password"){
+                  console.log(error.code)
+                  if(error.code === "auth/email-already-in-use"){
                     setBtnText(false);
-                    setMessage('E-mail o password incorrecto.');
+                    setMessage('El e-mail que ha ingresado ya se encuentra en uso.');
                     setShow(true);
                     setTimeout(() => setShow(false), 3000);
                   }
@@ -55,9 +56,9 @@ const Register = (props) => {
                       setShow(true);
                       setTimeout(() => setShow(false), 3000);
                   }
-                  else if(error.code === 'auth/email-already-in-use'){
+                  else if(error.code === "auth/wrong-password"){
                       setBtnText(false);
-                      setMessage('El e-mail que ha ingresado ya se encuentra en uso.');
+                      setMessage('E-mail o password incorrecto.');
                       setShow(true);
                       setTimeout(() => setShow(false), 3000);
                   }
@@ -100,7 +101,7 @@ const Register = (props) => {
                       <Form.Label>Contraseña</Form.Label>
                       <Form.Control type="password" placeholder="Contraseña" name='password' required />
                   </Form.Group>
-                  <Button variant="primary" type='submit'>
+                  <Button variant="primary" ref={target} type='submit'>
                     {
                       btnText ? <Spinner
                                 as="span"
@@ -115,7 +116,7 @@ const Register = (props) => {
                   </Button>
                   <Overlay  target={target.current}
                             show={show}
-                            placement="bottom"
+                            placement="top"
                             onHide={() => setShow(false)} rootClose={true}>
                             {props => {
                               return(

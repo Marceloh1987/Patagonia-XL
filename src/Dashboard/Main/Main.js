@@ -1,6 +1,6 @@
 import React from 'react';
 import {useParams} from 'react-router-dom';
-import firebase from '../Firebase/firebase';
+import firebase from '../../Firebase/firebase';
 import mainStyles from "./Main.module.scss";
 
 const Main = (props) => {

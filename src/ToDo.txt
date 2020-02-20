@@ -1,0 +1,3 @@
+- pagina de exito. listo
+- pagina de fallo. listo
+- pagina de espera listo

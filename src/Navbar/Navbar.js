@@ -24,15 +24,11 @@ export function NavBar(props) {
                 </Logo>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-<<<<<<< HEAD
-            {props.authenticated ?
-                <>
-                    <Nav className="mr-auto" />
-=======
+
             {props.authenticated ? 
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto" /> 
->>>>>>> eab1b4db0744b40936c3c563f50472a2c6f75f64
+
                     <Dropdown>
                         <Dropdown.Toggle variant="primary" id="dropdown-basic">
                             Bienvenido(a) {props.name}

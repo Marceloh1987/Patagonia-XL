@@ -24,9 +24,11 @@ export function NavBar(props) {
                 </Logo>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
             {props.authenticated ? 
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto" /> 
+
                     <Dropdown>
                         <Dropdown.Toggle variant="primary" id="dropdown-basic">
                             Bienvenido(a) {props.name}
@@ -53,6 +55,6 @@ export function NavBar(props) {
             <Login show={modalLoginShow} onHide={() => {setModalLoginShow(false)}} />
         </Navbar>
     )
-       
+
 
 }

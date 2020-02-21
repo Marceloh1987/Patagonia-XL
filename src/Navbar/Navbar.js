@@ -18,7 +18,7 @@ export function NavBar(props) {
 
     return (
         <Navbar bg="light" expand="lg" fixed='top'>
-            <Navbar.Brand href="#home">
+            <Navbar.Brand href="/">
                 <Logo>Patagonia XL
                     <span role="img" aria-label="Hamburguer">🍔</span>
                 </Logo>

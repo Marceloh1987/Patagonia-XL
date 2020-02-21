@@ -28,20 +28,24 @@ export function Menu({ setOpenFood, fbData, setCloseCart, closeCart }){
                 {}
                 <FoodGrid>
                     {fbData.map((food, i) => (
-                    <Food
-                    key={i}
-                        img={food.img}
-                        onClick={() => {
-                        setOpenFood(food);
-                        setCloseCart(true);
-                        }}
-                    >
-                        <FoodLabel>
-                            <div>{food.nombre}</div>
-                            <Detailstyled>{food.detalle}</Detailstyled>
-                            <div>{formatPrice(food.precio)}</div>
-                        </FoodLabel>
-                    </Food>
+                        food.stock ? (
+                            <Food
+                            key={i}
+                                img={food.img}
+                                onClick={() => {
+                                setOpenFood(food);
+                                setCloseCart(true);
+                                }}
+                            >
+                                <FoodLabel>
+                                    <div>{food.nombre}</div>
+                                    <Detailstyled>{food.detalle}</Detailstyled>
+                                    <div>{formatPrice(food.precio)}</div>
+                                </FoodLabel>
+                            </Food>
+                        )
+                        :
+                        <></>
                     ))}
                 </FoodGrid>
             </div>

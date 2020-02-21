@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import MenuBtn from "./MenuBtn";
 import navStyles from "./Nav.module.scss";
-import {NavLink} from 'react-router-dom';
+import {NavLink, Link} from 'react-router-dom';
 
 
 const Nav = (props) => {
-    console.log(props.userdata)
+    const uid = props.props.uid
+    const user_type = props.props.type;
 
 
     const [menuBtn, setmenuBtn] = useState({ isOpen: false });
@@ -16,29 +17,58 @@ const Nav = (props) => {
         console.log('loging out...');
     }
 
+
     return (
         <nav className={navStyles.navWrapper}>
             <div className={navStyles.logo}>
-                <NavLink to='/'>
+                <Link to='/'>
                     Patagonia XL
-                </NavLink>
+                </Link>
             </div>
             <span onClick={toggle} className={navStyles.menu}>
                 <MenuBtn isOpen={menuBtn.isOpen} />
             </span>
             <ul className={navStyles.nav}>
-                <NavLink to='/Profile'>
+                <NavLink to={`/dashboard/${uid}/profile`}>
                     <li>
                         <i className="fas fa-user fa-fw"></i>
                         Perfil
                     </li>
                 </NavLink>
-                <NavLink to='/Pedidos'>
-                    <li>
-                        <i className="fas fa-hamburger fa-fw"></i>
-                        Pedidos
-                    </li>
-                </NavLink>
+                {
+                    user_type === 'client' ? (
+                        <NavLink to={`/dashboard/${uid}/pedidos`}>
+                            <li>
+                                <i className="fas fa-hamburger fa-fw"></i>
+                                Pedidos
+                            </li>
+                        </NavLink>
+                    )
+                 :
+                    (
+                        <>
+                            <NavLink to={`/dashboard/${uid}/comandas`}>
+                                <li>
+                                    <i className="fas fa-clipboard-list fa-fw"></i>
+                                    Comandas
+                                </li>
+                            </NavLink>
+                            <NavLink to={`/dashboard/${uid}/products`}>
+                                <li>
+                                    <i className="fas fa-hamburger fa-fw"></i>
+                                    Productos
+                                </li>
+                            </NavLink>
+                            <NavLink to={`/dashboard/${uid}/comandas`}>
+                                <li>
+                                    <i className="fas fa-money-bill-wave fa-fw"></i>
+                                    Pagos
+                                </li>
+                            </NavLink>
+                        </>
+                    )
+                }
+                
                 <li onClick={handleLogOut}>
                     <i className="fas fa-sign-out-alt fa-fw"></i>
                     Salir

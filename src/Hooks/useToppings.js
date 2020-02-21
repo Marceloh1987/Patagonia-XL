@@ -23,7 +23,7 @@ export function useToppings(defaultTopping){
         "Huevo $500",
         "Pickles $500",
         "Tomate $500",
-        "Pimiento rojo",
+        "Pimiento rojo $500",
         "Aji verde $500",
         "Porcion de mayo $500",
         "Mayo con ajo $500",

@@ -1,7 +1,7 @@
 .jumbotron{
   margin: 4vh 0 4vh 0;
   background-image: url(./Banner.jpg);
-  background-size: 100%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
   color:white !important;
@@ -17,19 +17,13 @@
   margin-top:-10px;
 }
 .bg-text {
-  background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
   color: white;
   font-weight: bold;
   border: 3px solid #f1f1f1;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -100%);
   z-index: 2;
-  width: 80%;
+  width: 100%;
   padding: 20px;
-  text-align: center;
 }
 
 @media(max-width:480px){
@@ -43,8 +37,7 @@
   }
   .bg-text{
     height: auto;
-    width: 25rem;
+    width: 100%;
     padding: 5px 0 5px 0;
-    transform: translate(-50%, -95%);
   }
 }

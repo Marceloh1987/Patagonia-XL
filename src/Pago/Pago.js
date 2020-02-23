@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from 'react';
+import {Modal, Button, Form} from 'react-bootstrap';
 import * as MP from 'mercadopago';
 import credentials from './credentials.json';
 
+const Pago = (props) => {
+    // const orders = props.location.query.orders;
 
-export const Pago = (props) => {
     console.log(props);
-
-    const orders = props.location.query.orders;
     const [mpData, setMpData] = useState(null);
-    
+
+
     const config = () =>{
         MP.configure({
             sandbox:true,
@@ -16,4 +17,20 @@ export const Pago = (props) => {
         });
         MP.configurations.setAccessToken(credentials.access_token);
     }
+    
+
+    return(
+        <Modal {...props}>
+            <Modal.Header closeButton>
+                <Modal.Title>¿Esta bien su orden?</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form>
+
+                </Form>
+            </Modal.Body>
+        </Modal>
+    )
 }
+
+export default Pago;

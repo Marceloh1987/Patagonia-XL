@@ -97,6 +97,7 @@ const DialogBannerName = styled(FoodLabel)`
 
 const pricePerToppings = 500;
 
+
 export function getPrice(order){
     return (
          order.quantity * 

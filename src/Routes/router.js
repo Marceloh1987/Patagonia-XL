@@ -5,6 +5,7 @@ import { createBrowserHistory } from 'history';
 import Home from '../Home';
 import {NavBar} from '../Navbar/Navbar';
 import Dashboard from '../Dashboard/Dashboard';
+import Profile from '../Dashboard/Profile/Profile';
 import _404 from '../404/404';
 import {EsperaDialog} from '../Pago/Espera';
 import {ExitoDialog} from '../Pago/Exito';
@@ -22,6 +23,7 @@ const Routes = (props) =>{
             <Switch>
                 <Route path='/' exact component={() => <Home isAuthed={props.authenticated}/>} />
                 <Route path='/dashboard/:uid' component={Dashboard} />
+                <Route path='/Profile' component={Profile}/>
                 <Route path='/pago/wating' exact component={EsperaDialog}/>
                 <Route path='/pago/exito' exact component={ExitoDialog}/>
                 <Route path='/pago/Fallo' exact component={FalloDialog}/>

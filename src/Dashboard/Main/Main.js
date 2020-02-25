@@ -1,8 +1,8 @@
 import React from 'react';
-import mainStyles from "./Main.module.scss";
+import mainStyles from "../MainContainer.module.scss";
 
 const Main = (props) => {
-    console.log(props.userdata)
+    console.log(props.props.type)
     
     return(
         <div className={mainStyles.container}>

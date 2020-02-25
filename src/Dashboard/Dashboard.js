@@ -1,13 +1,38 @@
 import React, {useState, useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+import { Router, Route, Switch, useParams } from 'react-router-dom'
+import { createBrowserHistory } from 'history';
 import firebase from '../Firebase/firebase';
 import layout from './Dashboard.module.scss';
+import Profile from './Profile/Profile';
+import Comandas from './Comandas/Comandas';
+import Pedidos from './Pedidos/Pedidos';
+import Products from './Products/products';
 import Main from './Main/Main';
 import Nav from './Nav/Nav';
 
-const Dashboard = () => {
+export const history = createBrowserHistory();
+
+
+const DashboardRoute = (props) => {
+    return(
+        <Router history={history}>
+            <Nav props={props.userData} />
+            <Switch>
+                <Route exact path="/dashboard/:uid" component={() => <Main props={props.userData} />} />
+                <Route exact path="/dashboard/:uid/pedidos" component={Pedidos} />
+                <Route exact path="/dashboard/:uid/profile" component={Profile} />
+                <Route exact path='/dashboard/:uid/products' component={Products} />
+                <Route exact path='/dashboard/:uid/comandas' component={Comandas} />
+            </Switch>
+        </Router>
+
+    )
+}
+
+const Dashboard = (props) => {
 
     let {uid} = useParams();
+    
     const [userData, setUserData] = useState(null)
 
     useEffect(() => {
@@ -22,7 +47,7 @@ const Dashboard = () => {
             <div
                 style={{
                 backgroundColor: '#ffffff',
-                margin: '8% 0 0 0',
+                margin: '5% 0 0 0',
                 overflow: "hidden",
                 height: "100vh",
                 width: "100vw",
@@ -31,8 +56,7 @@ const Dashboard = () => {
             >
                 <div className={layout.container}>
                     <div className={layout.section}>
-                        <Nav userdata={userData} />
-                        <Main userdata={userData} />
+                        <DashboardRoute userData={userData} />
                     </div>
                 </div>
             </div>
@@ -40,7 +64,7 @@ const Dashboard = () => {
     }
     else{
         return(
-            <h1 style={{margin:'15% 0 0 25%'}}>Cargando...</h1>
+            <h1 style={{margin:'20% 0 0 0'}}>Cargando...</h1>
         )
     }
 }

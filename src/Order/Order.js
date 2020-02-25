@@ -8,7 +8,7 @@ import { formatPrice } from '../Data/FoodData';
 import { getPrice } from '../FoodDialog/FoodDialog';
 import { Title } from '../Styles/Title';
 import Login from '../Login/Login';
-import { Pago } from '../Pago/Pago';
+import Pago from '../Pago/Pago';
 import './Order.css';
 
 const OrderStyled = styled(Title)`
@@ -71,9 +71,10 @@ const DetailItem = styled.div`
 `;
 
 
-export function Order({ authenticated, orders, setOrders, setOpenFood, closeCart, setCloseCart }) {
+export function Order({ authenticated, uid, orders, setOrders, setOpenFood, closeCart, setCloseCart }) {
     
     const [modalLoginShow, setModalLoginShow] = useState(false);
+    const [modalPago, setModalPago] = useState(false);
 
     const subtotal = orders.reduce((total, order) => {
         return total + getPrice(order);
@@ -89,9 +90,7 @@ export function Order({ authenticated, orders, setOrders, setOpenFood, closeCart
             orders.length === 0 ? setCloseCart(true) : setCloseCart(false)
         }, [orders.length])
         
-    const handlePayment = (orders) => {
-        console.log(orders);
-    }
+
     return (
         <OrderStyled open={!closeCart}>
         <Login show={modalLoginShow} onHide={() => setModalLoginShow(false)} />
@@ -157,10 +156,13 @@ export function Order({ authenticated, orders, setOrders, setOpenFood, closeCart
             <DialogFooter>
                 <ConfirmButton onClick={()=>{
                     if(orders.length >= 0 && !authenticated) setModalLoginShow(true)
-                    else handlePayment(orders);
+                    else{
+                        setModalPago(true);   
+                    }
                 }}>
                     Pagar!
                 </ConfirmButton>
+                <Pago show={modalPago} onHide={() => setModalPago(false)} orders={orders} uid={uid} />
             </DialogFooter>                  
         </OrderStyled>
     );

@@ -11,8 +11,6 @@ import Login from '../Login/Login';
 import { Pago } from '../Pago/Pago';
 import './Order.css';
 
-
-
 const OrderStyled = styled(Title)`
     position: fixed;
     right: 0px;

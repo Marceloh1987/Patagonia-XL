@@ -73,7 +73,7 @@ const DetailItem = styled.div`
 `;
 
 
-export function Order({ authenticated, orders, setOrders, setOpenFood, closeCart, setCloseCart }) {
+export function Order({ authenticated, uid, orders, setOrders, setOpenFood, closeCart, setCloseCart }) {
     
     const [modalLoginShow, setModalLoginShow] = useState(false);
     const [modalPago, setModalPago] = useState(false);
@@ -164,7 +164,7 @@ export function Order({ authenticated, orders, setOrders, setOpenFood, closeCart
                 }}>
                     Pagar!
                 </ConfirmButton>
-                <Pago show={modalPago} onHide={() => setModalPago(false)} orders={orders} />
+                <Pago show={modalPago} onHide={() => setModalPago(false)} orders={orders} uid={uid} />
             </DialogFooter>                  
         </OrderStyled>
     );

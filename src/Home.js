@@ -32,7 +32,7 @@ const Home = (props) => {
       <>
       <GlobalStyle/>
       <FoodDialog {...openFood} {...orders} {...closeCart} />
-      <Order authenticated={props.isAuthed} {...orders} {...openFood} {...closeCart} />
+      <Order authenticated={props.isAuthed} uid={props.uid} {...orders} {...openFood} {...closeCart} />
       <Banner/>
       <Menu {...openFood} fbData={fbData} {...closeCart} />  
        <Footer/>

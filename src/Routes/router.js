@@ -21,7 +21,7 @@ const Routes = (props) =>{
         <Router history={history}>
             <NavBar authenticated={props.authenticated} user={props.user} name={props.name} uid={props.uid} />
             <Switch>
-                <Route path='/' exact component={() => <Home isAuthed={props.authenticated}/>} />
+                <Route path='/' exact component={() => <Home isAuthed={props.authenticated} uid={props.uid} />} />
                 <Route path='/dashboard/:uid' component={Dashboard} />
                 <Route path='/Profile' component={Profile}/>
                 <Route path='/pago/wating' exact component={EsperaDialog}/>

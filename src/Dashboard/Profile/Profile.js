@@ -1,10 +1,11 @@
 import React from 'react';
 import { Form, Col, Button } from 'react-bootstrap';
 import styled from 'styled-components';
+import { Title } from '../Title';
 
 const Profile = (props) => {
     return(
-        <Formulario>
+        <Formulario fluid>
             <Form>
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridName">
@@ -38,7 +39,7 @@ const Profile = (props) => {
                     <Form.Row>
                         <Form.Group controlId="formGridTextBox">
                             <Form.Label>Comentarios:</Form.Label>
-                            <Form.Control as="textarea" rows="10" Cols="110" />
+                            <Form.Control as="textarea" rows="5" Cols="140" />
                         </Form.Group>
                     </Form.Row>
 
@@ -52,13 +53,16 @@ const Profile = (props) => {
 
 export default Profile;
 
-const Formulario = styled.div`
-   background: #ffffff;
+const Formulario = styled(Title)`
+    background: #f3f3f3;
     box-shadow: 0px 2px 12px #3333338a;
-    min-width: 600px;
     border-radius: 15px;
-    margin: 15%;
     padding: 2rem 2rem 2rem 2rem;
+    margin-top: 1%;
+    margin-left: 5%;
+    margin-bottom: 5%;    
+    height: 100%;
+
 
 `;
 

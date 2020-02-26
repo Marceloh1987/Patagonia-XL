@@ -23,13 +23,13 @@ const JumboContainer = styled(Title)`
     .card-header {
         color: #ffffff;
         font-size: 20px;
-        background-color: #007bff;
+        background-color: #dc3545;
         margin-top: 0%;
     }
 
     .card-body {
         color: #000000;
-        font-size: 25px;
+        font-size: 24px;
     }
 
     .card-footer {

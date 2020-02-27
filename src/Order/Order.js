@@ -12,6 +12,8 @@ import Register from '../Register/Register';
 import Pago from '../Pago/Pago';
 import './Order.css';
 
+
+
 const OrderStyled = styled(Title)`
     position: fixed;
     right: 0px;

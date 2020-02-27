@@ -8,6 +8,7 @@ import { formatPrice } from '../Data/FoodData';
 import { getPrice } from '../FoodDialog/FoodDialog';
 import { Title } from '../Styles/Title';
 import Login from '../Login/Login';
+import Register from '../Register/Register';
 import Pago from '../Pago/Pago';
 import './Order.css';
 
@@ -73,7 +74,7 @@ const DetailItem = styled.div`
 
 export function Order({ authenticated, uid, orders, setOrders, setOpenFood, closeCart, setCloseCart }) {
     
-    const [modalLoginShow, setModalLoginShow] = useState(false);
+    const [modalRegisterShow, setModalRegisterShow] = useState(false);
     const [modalPago, setModalPago] = useState(false);
 
     const subtotal = orders.reduce((total, order) => {
@@ -93,7 +94,7 @@ export function Order({ authenticated, uid, orders, setOrders, setOpenFood, clos
 
     return (
         <OrderStyled open={!closeCart}>
-        <Login show={modalLoginShow} onHide={() => setModalLoginShow(false)} />
+        <Register show={modalRegisterShow} onHide={() => setModalRegisterShow(false)} />
             <div onClick={()=>{setCloseCart(!closeCart)}} className={`close_checkout ${!closeCart ? 'x' : 'cart'}`} >
                 {!closeCart ? 'X' : (
                     <div>
@@ -155,7 +156,7 @@ export function Order({ authenticated, uid, orders, setOrders, setOpenFood, clos
             )}
             <DialogFooter>
                 <ConfirmButton onClick={()=>{
-                    if(orders.length >= 0 && !authenticated) setModalLoginShow(true)
+                    if(orders.length >= 0 && !authenticated) setModalRegisterShow(true)
                     else{
                         setModalPago(true);   
                     }

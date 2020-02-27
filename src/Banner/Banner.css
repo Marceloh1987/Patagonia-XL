@@ -25,6 +25,10 @@
   width: 100%;
   padding: 20px;
 }
+.btn-primary a{
+  color: #ffffff;
+  text-decoration: none;
+}
 
 @media(max-width:480px){
   .jumbotron{

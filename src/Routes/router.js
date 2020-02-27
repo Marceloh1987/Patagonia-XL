@@ -12,6 +12,7 @@ import {ExitoDialog} from '../Pago/Exito';
 import {FalloDialog} from '../Pago/Fallo';
 
 
+
 export const history = createBrowserHistory();
 
 const NotFoundRedirect = () => <Redirect to='/not-found' />
@@ -24,7 +25,7 @@ const Routes = (props) =>{
                 <Route path='/' exact component={() => <Home isAuthed={props.authenticated} uid={props.uid} />} />
                 <Route path='/dashboard/:uid' component={Dashboard} />
                 <Route path='/Profile' component={Profile}/>
-                <Route path='/pago/wating' exact component={EsperaDialog}/>
+                <Route path='/pago/Espera' exact component={EsperaDialog}/>
                 <Route path='/pago/exito' exact component={ExitoDialog}/>
                 <Route path='/pago/Fallo' exact component={FalloDialog}/>
                 <Route path="/not-found" component={_404} />

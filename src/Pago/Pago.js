@@ -3,7 +3,6 @@ import {Modal, Button, Form, Spinner, Col} from 'react-bootstrap';
 import firebase from '../Firebase/firebase';
 import * as MP from 'mercadopago';
 import credentials from './credentials.json';
-import { findByAltText } from '@testing-library/react';
 
 const Pago = (props) => {
     // const orders = props.location.query.orders;

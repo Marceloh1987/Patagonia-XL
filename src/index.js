@@ -17,7 +17,6 @@ export const renderApp = (hasAuthenticated, user, name, uid) => {
 
 firebase.auth().onAuthStateChanged((userAuth) => {
     if (userAuth) {
-        
         const user = userAuth.email;
         const name = userAuth.displayName;
         const uid = userAuth.uid;

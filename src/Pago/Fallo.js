@@ -39,10 +39,9 @@ const JumboContainer = styled(Title)`
 
 `;
 
-export function FalloDialog(){
+export function FalloDialog(props){
     return(
         <>
-        <NavBar/>
         <Banner/>
         <JumboContainer>
             <Jumbotron fluid>

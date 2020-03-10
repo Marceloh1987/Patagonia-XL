@@ -39,10 +39,9 @@ const JumboContainer = styled(Title)`
 
 `;
 
-export function EsperaDialog(){
+export function EsperaDialog(props){
     return(
         <>
-        <NavBar/>
         <Banner/>
         <JumboContainer>
             <Jumbotron fluid>

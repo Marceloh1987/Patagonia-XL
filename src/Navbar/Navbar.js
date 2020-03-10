@@ -13,7 +13,6 @@ const Logo = styled(Title)`
     `;
 
 export function NavBar(props) {
-    console.log(props)
     const [modalRegisterShow, setModalRegisterShow] = useState(false);
     const [modalLoginShow, setModalLoginShow] = useState(false);
 

@@ -1,48 +1,44 @@
 import React, {useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
 import {Modal, Button, Form, Spinner, Col} from 'react-bootstrap';
 import firebase from '../Firebase/firebase';
-import * as MP from 'mercadopago';
-import credentials from './credentials.json';
+import MercadoPago from './MercadoPago';
+
+
 
 const Pago = (props) => {
     // const orders = props.location.query.orders;
-    console.log(props);
-    const [mpData, setMpData] = useState(null);
     const [checked, setChecked] = useState(false);
-    const [spinner, setSpinner] = useState(false);
     const [userData, setUserData] = useState(null);
+    const [showMP, setShowMP] = useState(false);
 
-
-    const config = () =>{
-        MP.configure({
-            sandbox:true,
-            access_token: credentials.access_token
-        });
-        MP.configurations.setAccessToken(credentials.access_token);
-    };
     
     const handleFormSubmit = (e) => {
         e.preventDefault();
-
         const { direccion, comentario} = e.target.elements;
-
-        console.log('Info Usuario: ',direccion.value, comentario.value);
-        console.log('Orden: ', props.orders);
+        if(direccion && comentario){
+            console.log('Info Usuario: ',direccion.value, comentario.value);
+        }
+        else{
+            setShowMP(true);
+            props.onHide();
+        }
     };
     
     const handleChecked = () => {
         setChecked(!checked);
     }
-    const handleDelivery = () =>{
-        setSpinner(true);
+
+    useEffect(() =>{
         firebase.database().ref(`/Users/${props.uid}`).on('value', (snapshot) => {
             setUserData(snapshot.val());
-            setSpinner(false);
-            console.log(snapshot.val())
         });
-    }
+        
+    }, [])
+ 
 
     return(
+        <>
         <Modal {...props}>
             <Modal.Header closeButton>
                 <Modal.Title>¿Desea servicio de entrega?</Modal.Title>
@@ -58,7 +54,6 @@ const Pago = (props) => {
                             label={'Si, por favor!'}
                             onChange={() => {
                                 handleChecked();
-                                handleDelivery();
                                 }
                              }
                         />
@@ -74,7 +69,6 @@ const Pago = (props) => {
                         />
                     </div>
                     <br/>
-                    {spinner ? (<Spinner style={{marginLeft:'47%'}} as="span" animation="border" size="sm" role="status" aria-hidden="true" />) : null}
                     {checked === true && userData ? (
                         <>
                         {userData.direccion === '' ? <h5>Complete sus datos de Contacto</h5> : <h5>¿Su información es correcta?</h5>}
@@ -119,7 +113,12 @@ const Pago = (props) => {
                 </Modal.Footer>
             </Form>
         </Modal>
+        {
+            userData && props.orders.length > 0 ? <MercadoPago show={showMP} onHide={() => setShowMP(false)} user={userData} order={props.orders}/> : null
+        }
+        </>
     )
 }
+
 
 export default Pago;
